@@ -50,7 +50,6 @@ class System extends \OSS_SNMP\MIB
     const OID_SYSTEM_NAME               = '.1.3.6.1.2.1.1.5.0';
     const OID_SYSTEM_LOCATION           = '.1.3.6.1.2.1.1.6.0';
     const OID_SYSTEM_SERVICES           = '.1.3.6.1.2.1.1.7.0';
-    const OID_SYSTEM_SERIALNUMBERS      = '.1.3.6.1.2.1.47.1.1.1.1.11';
 
     /**
      * Returns the system description of the device
@@ -117,16 +116,6 @@ class System extends \OSS_SNMP\MIB
     public function name()
     {
         return $this->getSNMP()->get( self::OID_SYSTEM_NAME );
-    }
-
-    /**
-     * Returns the serial numbers of the device
-     *
-     * @return string[] Array with serial numbers
-     */
-    public function serials()
-    {
-        return $this->getSNMP()->walk1d( self::OID_SYSTEM_SERIALNUMBERS );
     }
 
     /**
