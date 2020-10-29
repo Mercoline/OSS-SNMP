@@ -48,6 +48,9 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_INDEX = '.1.3.6.1.4.1.9.9.171.1.3.2.1.2.';
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_LOCAL_VALUE = '.1.3.6.1.4.1.9.9.171.1.2.3.1.3.';
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_REMOTE_VALUE = '.1.3.6.1.4.1.9.9.171.1.2.3.1.7.';
+    const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.13';
+    const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.12';
+    const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.11';
 
     /**
      * Returns the list of IpSec Tunnel Index.
@@ -95,5 +98,106 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     public function cikeTunRemoteValue($tunnelIndex)
     {
         return $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_REMOTE_VALUE.$tunnelIndex);
+    }
+
+    /**
+     * Constants for possible values of hash algo
+     */
+    const IPSEC_HASH_ALGO_SHA1 = 3;
+    const IPSEC_HASH_ALGO_SHA256 = 7;
+    const IPSEC_HASH_ALGO_SHA512 = 9;
+
+    /**
+     * Text representation of Hash algorythms
+     *
+     * @var array Text representation of Hash algorithms
+     */
+    public static $IPSEC_HASH_ALGO_TYPES = array(
+        self::IPSEC_HASH_ALGO_SHA1 => 'SHA1',
+        self::IPSEC_HASH_ALGO_SHA256 => 'SHA256',
+        self::IPSEC_HASH_ALGO_SHA512 => 'SHA512'
+    );
+
+    /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeTunHashAlgo($translate = false)
+    {
+        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_HASH_ALGO_TYPES);
+    }
+
+    /**
+     * Constants for possible values of encryption algo
+     */
+    const IPSEC_ENCRYPT_ALGO_3DES = 3;
+    const IPSEC_ENCRYPT_ALGO_AES = 6;
+
+    /**
+     * Text representation of encryption algorythms
+     *
+     * @var array Text representation of encryption algorithms
+     */
+    public static $IPSEC_ENCRYPT_ALGO_TYPES = array(
+        self::IPSEC_ENCRYPT_ALGO_3DES => '3DES-168',
+        self::IPSEC_ENCRYPT_ALGO_AES => 'AES-256'
+    );
+
+    /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeTunEncryptAlgo($translate = false)
+    {
+        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_ENCRYPT_ALGO_TYPES);
+    }
+
+    /**
+     * Constants for possible values of Hellman algo
+     */
+    const IPSEC_HELLMAN_ALGO_GRP5 = 4;
+    const IPSEC_HELLMAN_ALGO_GRP14 = 5;
+    const IPSEC_HELLMAN_ALGO_GRP19 = 9;
+    const IPSEC_HELLMAN_ALGO_GRP20 = 10;
+    const IPSEC_HELLMAN_ALGO_GRP21 = 11;
+
+    /**
+     * Text representation of Hellman algorythms
+     *
+     * @var array Text representation of Hellman algorithms
+     */
+    public static $IPSEC_HELLMAN_ALGO_TYPES = array(
+        self::IPSEC_HELLMAN_ALGO_GRP5 => 'Group 5',
+        self::IPSEC_HELLMAN_ALGO_GRP14 => 'Group 14',
+        self::IPSEC_HELLMAN_ALGO_GRP19 => 'Group 19',
+        self::IPSEC_HELLMAN_ALGO_GRP20 => 'Group 20',
+        self::IPSEC_HELLMAN_ALGO_GRP21 => 'Group 21'
+    );
+
+    /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeTunDiffHellmanGrp($translate = false)
+    {
+        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_HELLMAN_ALGO_TYPES);
     }
 }
