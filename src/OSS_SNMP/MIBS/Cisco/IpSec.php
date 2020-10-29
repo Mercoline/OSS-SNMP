@@ -103,12 +103,12 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of hash algo
      */
-    const IPSEC_HASH_ALGO_SHA1 = "INTEGER: 3";
-    const IPSEC_HASH_ALGO_SHA256 = "INTEGER: 7";
-    const IPSEC_HASH_ALGO_SHA512 = "INTEGER: 9";
+    const IPSEC_HASH_ALGO_SHA1 = 3;
+    const IPSEC_HASH_ALGO_SHA256 = 7;
+    const IPSEC_HASH_ALGO_SHA512 = 9;
 
     /**
-     * Text representation of Hash algorythms
+     * Text representation of Hash algorithms
      *
      * @var array Text representation of Hash algorithms
      */
@@ -125,7 +125,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunHashAlgo($translate = false)
     {
-        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO);
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO);
 
         if( !$translate )
             return $types;
@@ -136,11 +136,11 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of encryption algo
      */
-    const IPSEC_ENCRYPT_ALGO_3DES = "INTEGER: 3";
-    const IPSEC_ENCRYPT_ALGO_AES = "INTEGER: 6";
+    const IPSEC_ENCRYPT_ALGO_3DES = 3;
+    const IPSEC_ENCRYPT_ALGO_AES = 6;
 
     /**
-     * Text representation of encryption algorythms
+     * Text representation of encryption algorithms
      *
      * @var array Text representation of encryption algorithms
      */
@@ -156,7 +156,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunEncryptAlgo($translate = false)
     {
-        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO);
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO);
 
         if( !$translate )
             return $types;
@@ -167,14 +167,14 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of Hellman algo
      */
-    const IPSEC_HELLMAN_ALGO_GRP5 = "INTEGER: 4";
-    const IPSEC_HELLMAN_ALGO_GRP14 = "INTEGER: 5";
-    const IPSEC_HELLMAN_ALGO_GRP19 = "INTEGER: 9";
-    const IPSEC_HELLMAN_ALGO_GRP20 = "INTEGER: 10";
-    const IPSEC_HELLMAN_ALGO_GRP21 = "INTEGER: 11";
+    const IPSEC_HELLMAN_ALGO_GRP5 = 4;
+    const IPSEC_HELLMAN_ALGO_GRP14 = 5;
+    const IPSEC_HELLMAN_ALGO_GRP19 = 9;
+    const IPSEC_HELLMAN_ALGO_GRP20 = 10;
+    const IPSEC_HELLMAN_ALGO_GRP21 = 11;
 
     /**
-     * Text representation of Hellman algorythms
+     * Text representation of Hellman algorithms
      *
      * @var array Text representation of Hellman algorithms
      */
@@ -193,7 +193,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunDiffHellmanGrp($translate = false)
     {
-        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
 
         if( !$translate )
             return $types;
