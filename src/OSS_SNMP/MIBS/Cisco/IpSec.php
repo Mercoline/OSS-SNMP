@@ -103,9 +103,9 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of hash algo
      */
-    const IPSEC_HASH_ALGO_SHA1 = 3;
-    const IPSEC_HASH_ALGO_SHA256 = 7;
-    const IPSEC_HASH_ALGO_SHA512 = 9;
+    const IPSEC_HASH_ALGO_SHA1 = "INTEGER: 3";
+    const IPSEC_HASH_ALGO_SHA256 = "INTEGER: 7";
+    const IPSEC_HASH_ALGO_SHA512 = "INTEGER: 9";
 
     /**
      * Text representation of Hash algorythms
@@ -136,8 +136,8 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of encryption algo
      */
-    const IPSEC_ENCRYPT_ALGO_3DES = 3;
-    const IPSEC_ENCRYPT_ALGO_AES = 6;
+    const IPSEC_ENCRYPT_ALGO_3DES = "INTEGER: 3";
+    const IPSEC_ENCRYPT_ALGO_AES = "INTEGER: 6";
 
     /**
      * Text representation of encryption algorythms
@@ -167,11 +167,11 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of Hellman algo
      */
-    const IPSEC_HELLMAN_ALGO_GRP5 = 4;
-    const IPSEC_HELLMAN_ALGO_GRP14 = 5;
-    const IPSEC_HELLMAN_ALGO_GRP19 = 9;
-    const IPSEC_HELLMAN_ALGO_GRP20 = 10;
-    const IPSEC_HELLMAN_ALGO_GRP21 = 11;
+    const IPSEC_HELLMAN_ALGO_GRP5 = "INTEGER: 4";
+    const IPSEC_HELLMAN_ALGO_GRP14 = "INTEGER: 5";
+    const IPSEC_HELLMAN_ALGO_GRP19 = "INTEGER: 9";
+    const IPSEC_HELLMAN_ALGO_GRP20 = "INTEGER: 10";
+    const IPSEC_HELLMAN_ALGO_GRP21 = "INTEGER: 11";
 
     /**
      * Text representation of Hellman algorythms
