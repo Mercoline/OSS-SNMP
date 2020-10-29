@@ -125,7 +125,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunHashAlgo($translate = false)
     {
-        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO);
+        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO);
 
         if( !$translate )
             return $types;
@@ -156,7 +156,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunEncryptAlgo($translate = false)
     {
-        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO);
+        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO);
 
         if( !$translate )
             return $types;
@@ -193,7 +193,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      */
     public function cikeTunDiffHellmanGrp($translate = false)
     {
-        $types = $this->getSNMP()->get(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
+        $types = $this->getSNMP()->realWalk(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
 
         if( !$translate )
             return $types;
