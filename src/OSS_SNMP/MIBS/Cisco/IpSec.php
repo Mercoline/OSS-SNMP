@@ -51,6 +51,8 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HASH_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.13';
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_ENCRYPT_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.12';
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.11';
+    const OID_CIKE_PEER_COOR_IPSEC_ENCRYPT_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.12';
+    const OID_CIKE_PEER_COOR_IPSEC_HELLMAN_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.11';
 
     /**
      * Returns the list of IpSec Tunnel Index.
@@ -165,6 +167,21 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     }
 
     /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeIpSecEncryptAlgo($translate = false)
+    {
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_ENCRYPT_ALGO);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_ENCRYPT_ALGO_TYPES);
+    }
+
+    /**
      * Constants for possible values of Hellman algo
      */
     const IPSEC_HELLMAN_ALGO_GRP5 = 4;
@@ -194,6 +211,21 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     public function cikeTunDiffHellmanGrp($translate = false)
     {
         $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_HELLMAN_ALGO_TYPES);
+    }
+
+    /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeIpSecDiffHellmanGrp($translate = false)
+    {
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_IPSEC_HELLMAN_ALGO);
 
         if( !$translate )
             return $types;
