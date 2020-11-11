@@ -184,6 +184,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     /**
      * Constants for possible values of Hellman algo
      */
+    const IPSEC_HELLMAN_ALGO_GRP2 = 3;
     const IPSEC_HELLMAN_ALGO_GRP5 = 4;
     const IPSEC_HELLMAN_ALGO_GRP14 = 5;
     const IPSEC_HELLMAN_ALGO_GRP19 = 9;
@@ -196,6 +197,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
      * @var array Text representation of Hellman algorithms
      */
     public static $IPSEC_HELLMAN_ALGO_TYPES = array(
+        self::IPSEC_HELLMAN_ALGO_GRP2 => 'Group 2',
         self::IPSEC_HELLMAN_ALGO_GRP5 => 'Group 5',
         self::IPSEC_HELLMAN_ALGO_GRP14 => 'Group 14',
         self::IPSEC_HELLMAN_ALGO_GRP19 => 'Group 19',
