@@ -53,6 +53,7 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
     const OID_CIKE_PEER_COOR_IPSEC_TUN_IKE_TUN_HELLMAN_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.11';
     const OID_CIKE_PEER_COOR_IPSEC_ENCRYPT_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.12';
     const OID_CIKE_PEER_COOR_IPSEC_HELLMAN_ALGO = '.1.3.6.1.4.1.9.9.171.1.2.3.1.11';
+    const OID_CIKE_PEER_COOR_TUN_STATUS = '.1.3.6.1.4.1.9.9.171.1.2.3.1.35';
 
     /**
      * Returns the list of IpSec Tunnel Index.
@@ -233,5 +234,36 @@ class IpSec extends \OSS_SNMP\MIBS\Cisco
             return $types;
 
         return $this->getSNMP()->translate( $types, self::$IPSEC_HELLMAN_ALGO_TYPES);
+    }
+
+    /**
+     * Constants for possible values of Hellman algo
+     */
+    const IPSEC_TUN_STATUS_DOWN = 0;
+    const IPSEC_TUN_STATUS_UP = 1;
+
+    /**
+     * Text representation of Hellman algorithms
+     *
+     * @var array Text representation of Hellman algorithms
+     */
+    public static $IPSEC_TUN_STATUS = array(
+        self::IPSEC_TUN_STATUS_DOWN => 'Offline',
+        self::IPSEC_TUN_STATUS_UP => 'Online'
+    );
+
+    /**
+     * TODO
+     *
+     * @return int[] TODO
+     */
+    public function cikeTunStatus($translate = false)
+    {
+        $types = $this->getSNMP()->walk1d(self::OID_CIKE_PEER_COOR_TUN_STATUS);
+
+        if( !$translate )
+            return $types;
+
+        return $this->getSNMP()->translate( $types, self::$IPSEC_TUN_STATUS);
     }
 }
